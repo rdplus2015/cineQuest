@@ -1,0 +1,9 @@
+Frontend projet
+
+- Html, Css, Javascript
+- FEtch 
+- React (maybe)
+- S3 
+- CloudFront 
+- Route 53 
+
