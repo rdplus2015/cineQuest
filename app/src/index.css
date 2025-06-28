@@ -1,2 +1,12 @@
 @import "tailwindcss";
 
+
+body{
+
+}
+
+
+@theme{
+        --color-mainBlack: #131316; 
+        --color-secondaryBlack: #1c1c21; 
+}

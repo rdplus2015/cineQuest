@@ -5,7 +5,7 @@ export default function PageLayout({children}) {
         
         
         return (
-               <div className="bg-gray-800">
+               <div className="bg-mainBlack text-gray-300">
                 <Header/>
                         {children} 
                 <Footer/>
