@@ -11,7 +11,7 @@ export default function LinkButton({to, children, className=""}) {
                         className={
                                 `
                                 inline-block
-                                px-[clamp(3rem,1vw,2rem)]
+                                px-[clamp(3rem,1vw,5rem)]
                                 py-[clamp(0.7rem,0.1vw,1rem)]
                                 text-[clamp(1rem,0.2vw,1.25rem)]
                                 rounded-lg 
