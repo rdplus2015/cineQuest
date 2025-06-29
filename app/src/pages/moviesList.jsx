@@ -5,7 +5,7 @@ export default function MoviesList() {
                 
                 <PageLayout>
                        <main className="flex-1">
-                        <div className="flex flex-col w-auto mx-[clamp(1.5rem, 5vw, 3rem)] my-24">
+                        <div className="flex flex-col w-auto mx-[clamp(1rem,10vw,9rem)] my-16">
                                 <SearchBar placeholder="Enter the film name" />
                         </div>
                        </main>

@@ -7,15 +7,16 @@ export default function SearchBar({ placeholder }) {
         bg-secondaryBlack
         w-auto
         px-6
-        py-1
+        py-4
         outline-none 
         text-red-500 
         transition-all duration-400 ease-in-out 
-        focus:ring-1 
+        focus:ring-1 ring-gray-800
         rounded-lg 
-        text-[clamp(1rem,1.5vw,2rem)]
-        placeholder:text-[clamp(1rem,1.3vw,2rem)]
-        drop-shadow-xl
+        text-[clamp(1.5rem,1.2vw,2rem)]
+        placeholder:text-[clamp(1.5rem,1.2vw,2rem)]
+        drop-shadow-2xl
+        drop-shadow-black
       "
     />
   );
