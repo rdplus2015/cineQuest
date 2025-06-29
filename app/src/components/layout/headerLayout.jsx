@@ -12,7 +12,7 @@ export default function Header() {
                                         </h1> 
                                         </a>
                                 </div>
-                                <LinkButton to={"/favorites"} className="bg-secondaryBlack text-gray-300 hover:bg-red-500"> Favorites </LinkButton>
+                                <LinkButton to={"/favorites"} className="bg-secondaryBlack text-gray-300 hover:bg-red-500 font-bold"> Favorites </LinkButton>
                         </div>                  
                 </header>
         )
