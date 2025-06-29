@@ -15,6 +15,7 @@ export default function SearchBar({ placeholder }) {
         rounded-lg 
         text-[clamp(1rem,1.5vw,2rem)]
         placeholder:text-[clamp(1rem,1.3vw,2rem)]
+        drop-shadow-xl
       "
     />
   );
