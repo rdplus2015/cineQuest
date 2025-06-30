@@ -1,7 +1,8 @@
-import PageLayout from "../components/pageLayout"
-import SearchBar from "../components/form/searchBar"
-import LinkButton from "../components/form/LinkButton"
-import MovieCard from "../components/layout/movieCard"
+import PageLayout from "../components/layout/pageLayout"
+import SearchBar from "../components/searchBar"
+import LinkButton from "../components/LinkButton"
+import MovieCard from "../components/movieCard"
+import { Link } from "react-router-dom"
 
 
 export default function MoviesList() {
@@ -26,7 +27,7 @@ export default function MoviesList() {
                                         <SearchBar placeholder="Enter the film name" />
                                 </div>
                                 <div className="w-full items-center place-items-center flex justify-around flex-wrap grap-3 my-20 px-10">
-                                        <MovieCard title="Mr robot " year= "2016" imgUrl="/img/mrRobot.jpeg" /> 
+                                        <Link to="/movieDetail"> <MovieCard title="Mr robot " year= "2016" imgUrl="/img/mrRobot.jpeg" /> </Link>
                                         <MovieCard title="Mr robot " year= "2016" imgUrl="/img/joker.jpeg" /> 
                                         <MovieCard title="Mr robot " year= "2016" imgUrl="/img/mrRobot.jpeg" /> 
                                         <MovieCard title="Mr robot " year= "2016" imgUrl="/img/joker.jpeg" /> 

@@ -1,5 +1,5 @@
-import Header from "./layout/headerLayout"
-import Footer from "./layout/footerLayout"
+import Header from "./headerLayout"
+import Footer from "./footerLayout"
 
 
 export default function PageLayout({children}) {

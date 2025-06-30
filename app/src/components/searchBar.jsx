@@ -9,7 +9,8 @@ export default function SearchBar({ placeholder }) {
         px-6
         py-4
         outline-none 
-        text-red-500 
+        text-gray-500 
+        font-bold
         transition-all duration-400 ease-in-out 
         focus:ring-1 ring-gray-800
         rounded-lg 

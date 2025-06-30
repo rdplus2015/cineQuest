@@ -1,9 +1,8 @@
-import SearchBar from "../form/searchBar"
-import LinkButton from "../form/LinkButton"
+import LinkButton from "../LinkButton"
 
 export default function Header() {
         return (
-                <header className="my-4">
+                <header className="py-4  border-b-1 border-gray-800">
                         <div className=" flex justify-around py-2 align-items-center">
                                 <div className="flex items-center">
                                         <a href="http:/"> 

@@ -18,6 +18,7 @@ export default function LinkButton({to, children, className=""}) {
                                 focus:ring-2 
                                 focus:ring-red-300 
                                 transition-all duration-400 ease-in-out
+                                hover:scale-105
                                 ${className}
                           `
                         }
