@@ -1,10 +1,11 @@
 import PageLayout from "../components/layout/pageLayout";
+import LinkButton from "../components/LinkButton";
 
 export default function MovieDetail() {
         return (
                 <PageLayout>
                         <div>
-                                <div className="my-20 mx-10 sm:mx-10 md:mx-20 lg:mx-40 rounded-xl overflow-hidden  bg-secondaryBlack shadow-lg shadow-black transition-transform duration-300 hover:scale-105 ">
+                                <div className="my-20 mx-10 sm:mx-10 md:mx-20 lg:mx-40 rounded-xl overflow-hidden  bg-secondaryBlack shadow-lg shadow-black">
                                         <img src="/img/tango.avif" alt="" className="w-full h-100 object-cover"/>
                                         <div className="p-8 text-white" >
                                                 <h3 className="text-[clamp(1rem,3vw,2.5rem)] font-semibold ">
@@ -23,6 +24,10 @@ export default function MovieDetail() {
                                                         <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> vote_average </p>
                                                         <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> popularity </p>
                                                         <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> genres </p>
+                                                </div>
+                                                <div className=" flex gap-4 mt-8">
+                                                        <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-red-500"> Watch </LinkButton>
+                                                        <LinkButton to={"/"} className="bg-mainBlack"> See all movies </LinkButton>
                                                 </div>
                                         </div>
                                 </div>
