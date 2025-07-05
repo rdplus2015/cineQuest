@@ -6,13 +6,16 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getPopularMovies } from "../services/tmdbAPI"
 import Button from "../components/button"
+import { searchMovies } from "../services/tmdbAPI"
 
 export default function MoviesList() {
 
         const [totalPages, setTotalPages] = useState(null)
         const [page, setPage] = useState(1)
         const [movies, setMovies] = useState([])
-       
+        
+        const [query, setQuery] = useState("");
+        const [debouncedQuery, setDebouncedQuery] = useState("");
 
         const handleNextPage = () => {
                 if (page < totalPages) setPage(page + 1);
@@ -22,18 +25,34 @@ export default function MoviesList() {
               if (page > 1) setPage(page - 1);
         };
      
+        
+        useEffect(() => {
+        const timeoutId = setTimeout(() => {
+        setDebouncedQuery(query); // après 500ms d’inactivité
+        }, 500);
 
-        useEffect(() =>{
-                getPopularMovies({page}).then(
-                        data=>{
-                        if (totalPages === null) {
-                                setTotalPages(data.total_pages);
+        return () => clearTimeout(timeoutId); // annule si on retape vite
+        }, [query]);
+
+
+        useEffect(() => {
+                const fetchData = async () => {
+                        let data;
+
+                        if (debouncedQuery.trim() !== "") {
+                                // Recherche : on utilise le texte tapé
+                                data = await searchMovies(debouncedQuery, page);
+                        } else {
+                                // Pas de recherche : on affiche les films populaires
+                                data = await getPopularMovies({ page });
                         }
 
-                        setMovies(data.results)
-                        console.log(data);         
-                });   
-        }, [page])
+                                setMovies(data.results);
+                                setTotalPages(data.total_pages);
+                };
+
+                fetchData();
+        }, [page, debouncedQuery]);
 
 
         return(
@@ -54,7 +73,14 @@ export default function MoviesList() {
                                 </div> 
                                 
                                 <div className="flex flex-col w-auto mx-[clamp(1rem,10vw,9rem)] my-16">
-                                        <SearchBar placeholder="Enter the film name" />
+                                        <SearchBar 
+                                                placeholder="Enter the film name"
+                                                onChange={(e) => {
+                                                setQuery(e.target.value);
+                                                setPage(1); // on revient à la page 1 pour chaque nouvelle recherche
+                                                }} 
+                                        
+                                        />
                                 </div>
                                 
                                       <div className="w-full flex justify-center flex-wrap gap-6 my-10  px-5">

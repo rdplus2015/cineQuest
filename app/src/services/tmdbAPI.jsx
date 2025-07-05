@@ -7,8 +7,18 @@ export async function getPopularMovies({page}) {
         return data;
 }
 
-export async function getMovie({movieId}){
+export async function getMovie(movieId){
         const res = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
         const data = await res.json();
         return data;
+
+}
+
+
+export async function searchMovies(query, page = 1) { // ✅ à ajouter
+  const res = await fetch(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=${page}`
+  );
+  const data = await res.json();
+  return data;
 }

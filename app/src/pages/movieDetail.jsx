@@ -13,7 +13,7 @@ export default function MovieDetail() {
         const [movie, setMovie] = useState(null)
 
         useEffect(()=>{
-                getMovie({movieId}).then(data=>{
+                getMovie(movieId).then(data=>{
                         setMovie(data) 
                 })
                 

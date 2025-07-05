@@ -1,8 +1,9 @@
-export default function SearchBar({ placeholder }) {
+export default function SearchBar({ placeholder, onChange }) {
   return (
     <input 
       type="text" 
       placeholder={placeholder}
+      onChange={onChange}
       className="
         bg-secondaryBlack
         w-auto
