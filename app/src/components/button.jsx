@@ -7,8 +7,9 @@ export default function Button({children, className="", disabled, onClick}) {
                                 `
                                         mx-2 px-10 py-0
                                         rounded 
-                                        bg-secondaryBlack text-white 
                                         disabled:opacity-40
+                                        transition-all duration-400 ease-in-out
+                                        hover:scale-105
                                         ${className}
                                 `
                         }

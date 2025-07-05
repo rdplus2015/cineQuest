@@ -70,13 +70,10 @@ export default function MoviesList() {
                                         </div>
 
                                 <div className="flex justify-center flex-wrap my-10">
-                                        <Button  onClick={handlePreviousPage} className="" disabled={page <= 1}>  Previous </Button>
+                                        <Button  onClick={handlePreviousPage} className="  bg-secondaryBlack text-white " disabled={page <= 1}>  Previous </Button>
                                         <p className="font-bold p-4">{page} sur {totalPages}</p>
-                                        <Button  onClick={ handleNextPage} disabled={page >= totalPages}>  next  </Button>                                         
-                                </div>  
-
-                        
-                                                           
+                                        <Button  onClick={ handleNextPage} className="  bg-secondaryBlack text-white " disabled={page >= totalPages}>  next  </Button>                                         
+                                </div>                                  
                        </main>
                 </PageLayout>
                 
