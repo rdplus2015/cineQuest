@@ -13,14 +13,17 @@ export default function Favorites() {
                 setFavorites(data);
         }, []);
 
+        const handleClick = ()=>{
+                localStorage.removeItem("favorites");
+                setFavorites([]);
+                alert(" All Favorites deleted !");
+        }
         return (
                 
                 <PageLayout>
-                       <div className="flex flex-col justify-center items-center ">
-                                <div>
-                                        
-                                        <Button className="bg-secondaryBlack hover:bg-red-500 mt-15" > Clean Favorites </Button>
-                                </div>
+                       <div className=" flex flex-col  items-center ">
+                  
+                                        <Button className="bg-secondaryBlack hover:bg-red-500 py-5 mt-24" onClick={handleClick}> Clear Favorites </Button>
                      
                                 <div className=" flex flex-wrap gap-6 justify-center my-20 px-10">
                                 {favorites.map(movie => (
