@@ -62,19 +62,19 @@ export default function MoviesList() {
                        <motion.main className="flex-1"
                        initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 2.5, ease: "easeOut" }}
+                        transition={{ duration: 1, ease: "easeOut" }}
                        >
                                 <div className="relative bg-[url(/img/tango.avif)] bg-cover bg-center min-h-[300px] md:min-h-[500px]">
-                                        <div className="absolute inset-0 bg-mainBlack/80"></div>
+                                        <div className="absolute inset-0 bg-gray-800/80  dark:bg-mainBlack/80"></div>
                                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                                                <motion.h2 className=" text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono"
+                                                <motion.h2 className=" text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono text-white"
                                                         initial={{ opacity: 0, y:-20}}
                                                         animate={{ opacity: 1, y:0 }}
                                                         transition={{ duration: 1, ease: "easeOut" }}
                                                 >
                                                                 Tonight’s Perfect Movie Awaits! 
                                                 </motion.h2>
-                                                <motion.p className=" text-red-500 text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono weight-900 "
+                                                <motion.p className=" text-gray-500 dark:text-red-500 text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono weight-900  transition-colors duration-500 ease-in-out "
                                                         initial={{ opacity: 0, y: 20 }}
                                                         animate={{ opacity: 1, y: 0 }}
                                                         transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}  
@@ -86,7 +86,7 @@ export default function MoviesList() {
                                                         animate={{ opacity: 1, x:0 }}
                                                         transition={{ duration: 1, ease: "easeOut" }}
                                                 >
-                                                        <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-secondaryBlack text-gray-300 hover:bg-red-500 font-bold"> Watch </LinkButton>
+                                                        <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-gray-500 text-white dark:bg-secondaryBlack dark:text-gray-300 hover:bg-gray-700 dark:hover:bg-red-500 font-bold"> Watch </LinkButton>
                                                 </motion.span>
                                         </div>
                                 </div> 

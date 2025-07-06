@@ -1,6 +1,6 @@
  export default function Footer() {
         return (
-                <footer className="d-flex flex-col gap-2 text-center border-t-1 border-gray-800 ">
+                <footer className="d-flex flex-col gap-2 text-center border-t-1 border-gray-400 dark:border-gray-800 ">
                       <h2 className="text-gray-400 text-lg mt-5"> All rights reserved </h2>
                       <div className="flex justify-center gap-2 my-3">
                         <a href="https://www.linkedin.com/in/ridi-otoko-624a401a2/">

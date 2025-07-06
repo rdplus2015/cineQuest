@@ -6,7 +6,7 @@ export default function PageLayout({children}) {
         
         
         return (
-               <div className="bg-mainBlack text-gray-300 min-h-screen flex flex-col">
+               <div className="text-mainBlack bg-gray-300 dark:bg-mainBlack dark:text-gray-300 min-h-screen flex flex-col transition-colors duration-500 ease-in-out">
                 <Header/>
                         {children} 
                 <Footer/>
