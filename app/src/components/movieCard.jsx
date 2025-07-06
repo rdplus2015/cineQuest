@@ -1,8 +1,13 @@
+import {motion}  from "framer-motion"
+
 export default function MovieCard({ title, year, imgUrl }) {
   
   return (
-    <div className="w-[200px] h-[400px] flex flex-col mb-10 rounded-xl overflow-hidden bg-secondaryBlack shadow-lg shadow-black transition-transform duration-300 hover:scale-105">
-      
+    <motion.div 
+      className="w-[200px] h-[400px] flex flex-col mb-10 rounded-xl overflow-hidden bg-secondaryBlack shadow-lg shadow-black transition-transform duration-300 hover:scale-105"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}>
       <img
         src={imgUrl}
         alt={title}
@@ -18,7 +23,7 @@ export default function MovieCard({ title, year, imgUrl }) {
           <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400">{year}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

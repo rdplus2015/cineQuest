@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { getPopularMovies } from "../services/tmdbAPI"
 import Button from "../components/button"
 import { searchMovies } from "../services/tmdbAPI"
+import { motion } from "framer-motion"
 
 export default function MoviesList() {
 
@@ -58,30 +59,52 @@ export default function MoviesList() {
         return(
                 
                 <PageLayout>
-                       <main className="flex-1">
+                       <motion.main className="flex-1"
+                       initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 2.5, ease: "easeOut" }}
+                       >
                                 <div className="relative bg-[url(/img/tango.avif)] bg-cover bg-center min-h-[300px] md:min-h-[500px]">
                                         <div className="absolute inset-0 bg-mainBlack/80"></div>
                                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                                                <h2 className=" text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono">
+                                                <motion.h2 className=" text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono"
+                                                        initial={{ opacity: 0, y:-20}}
+                                                        animate={{ opacity: 1, y:0 }}
+                                                        transition={{ duration: 1, ease: "easeOut" }}
+                                                >
                                                                 Tonight’s Perfect Movie Awaits! 
-                                                </h2>
-                                                <p className=" text-red-500 text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono weight-900 ">
+                                                </motion.h2>
+                                                <motion.p className=" text-red-500 text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono weight-900 "
+                                                        initial={{ opacity: 0, y: 20 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}  
+                                                >
                                                                 Discover, Watch, Love!
-                                                </p>
-                                                <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-secondaryBlack text-gray-300 hover:bg-red-500 font-bold"> Watch </LinkButton>
+                                                </motion.p>
+                                                <motion.span 
+                                                        initial={{ opacity: 0, x:-20}}
+                                                        animate={{ opacity: 1, x:0 }}
+                                                        transition={{ duration: 1, ease: "easeOut" }}
+                                                >
+                                                        <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-secondaryBlack text-gray-300 hover:bg-red-500 font-bold"> Watch </LinkButton>
+                                                </motion.span>
                                         </div>
                                 </div> 
                                 
-                                <div className="flex flex-col w-auto mx-[clamp(1rem,10vw,9rem)] my-16">
+                                <motion.div className="flex flex-col w-auto mx-[clamp(1rem,10vw,9rem)] my-16"
+                                
+                                        initial={{ opacity: 0, scale: 0.50 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 1, ease: "easeOut" }}
+                                >
                                         <SearchBar 
-                                                placeholder="Enter the film name"
-                                                onChange={(e) => {
-                                                setQuery(e.target.value);
-                                                setPage(1); // on revient à la page 1 pour chaque nouvelle recherche
-                                                }} 
+                                        placeholder="Enter the film name"
+                                        onChange={(e) => {
+                                        setQuery(e.target.value);
+                                        setPage(1); // on revient à la page 1 pour chaque nouvelle recherche
+                                        }} /> 
                                         
-                                        />
-                                </div>
+                                </motion.div>
                                 
                                       <div className="w-full flex justify-center flex-wrap gap-6 my-10  px-5">
                                                 {movies.map(movie => (
@@ -100,7 +123,7 @@ export default function MoviesList() {
                                         <p className="font-bold p-4">{page} sur {totalPages}</p>
                                         <Button  onClick={ handleNextPage} className="  bg-secondaryBlack text-white " disabled={page >= totalPages}>  next  </Button>                                         
                                 </div>                                  
-                       </main>
+                       </motion.main>
                 </PageLayout>
                 
         )

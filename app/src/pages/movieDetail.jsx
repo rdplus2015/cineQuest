@@ -4,7 +4,7 @@ import LinkButton from "../components/LinkButton";
 import { getMovie } from "../services/tmdbAPI";
 import { useParams } from "react-router-dom";
 import Button from "../components/button";
-
+import { motion } from "framer-motion";
 
 
 export default function MovieDetail() {
@@ -45,7 +45,12 @@ export default function MovieDetail() {
         if (movie) {
                  return (
                         <PageLayout>
-                                <div>
+                                <motion.main
+                                
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 1.5, ease: "easeOut" }}
+                                >
                                         <div className="my-20 mx-10 sm:mx-10 md:mx-20 lg:mx-40 rounded-xl overflow-hidden  bg-secondaryBlack shadow-lg shadow-black">
                                                 <img
                                                         src={
@@ -91,7 +96,7 @@ export default function MovieDetail() {
                                                         </div>
                                                 </div>
                                         </div>
-                                </div>
+                                </motion.main>
                         </PageLayout>
                 ) 
         }

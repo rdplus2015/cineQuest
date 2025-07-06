@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import Button from "../components/button";
+import { motion } from "framer-motion";
 
 export default function Favorites() {
         const [favorites, setFavorites] = useState([]);
@@ -21,7 +22,11 @@ export default function Favorites() {
         return (
                 
                 <PageLayout>
-                       <div className=" flex flex-col  items-center ">
+                       <motion.main className=" flex flex-col  items-center "
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1.5, ease: "easeOut" }}
+                       >
                   
                                         <Button className="bg-secondaryBlack hover:bg-red-500 py-5 mt-24" onClick={handleClick}> Clear Favorites </Button>
                      
@@ -32,7 +37,7 @@ export default function Favorites() {
                                                 </Link>
                                         ))}
                                 </div>
-                        </div>
+                        </motion.main>
                 </PageLayout>
         )
 }
