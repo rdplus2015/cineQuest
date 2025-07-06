@@ -1,5 +1,7 @@
 import LinkButton from "../LinkButton"
 import { motion } from "framer-motion"
+import DarkModeToggle
+ from "../darkModeToggle"
 export default function Header() {
         return (
                 <header className="py-4  border-b-1 border-gray-800">
@@ -15,13 +17,16 @@ export default function Header() {
                                         </motion.h1> 
                                         </a>
                                 </div>
-                                <motion.span 
+                                <motion.div 
                                         initial={{ opacity: 0, x:20}}
                                         animate={{ opacity: 1, x:0 }}
                                         transition={{ duration: 1, ease: "easeOut" }}
+                                        className="flex gap-5"
                                 >
+                                        
                                         <LinkButton to={"/favorites"} className="bg-secondaryBlack text-gray-300 hover:bg-red-500 font-bold"> Favorites </LinkButton>
-                                  </motion.span>
+                                        <DarkModeToggle/>
+                                  </motion.div>
                                 
                         </div>                  
                 </header>
