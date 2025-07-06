@@ -119,9 +119,9 @@ export default function MoviesList() {
                                         </div>
 
                                 <div className="flex justify-center flex-wrap my-10">
-                                        <Button  onClick={handlePreviousPage} className="  bg-secondaryBlack text-white " disabled={page <= 1}>  Previous </Button>
+                                        <Button  onClick={handlePreviousPage} className="  bg-gray-400 dark:bg-secondaryBlack text-secondaryBlack dark:text-white " disabled={page <= 1}>  Previous </Button>
                                         <p className="font-bold p-4">{page} sur {totalPages}</p>
-                                        <Button  onClick={ handleNextPage} className="  bg-secondaryBlack text-white " disabled={page >= totalPages}>  next  </Button>                                         
+                                        <Button  onClick={ handleNextPage} className="  bg-gray-400 dark:bg-secondaryBlack text-secondaryBlack dark:text-white " disabled={page >= totalPages}>  next  </Button>                                         
                                 </div>                                  
                        </motion.main>
                 </PageLayout>

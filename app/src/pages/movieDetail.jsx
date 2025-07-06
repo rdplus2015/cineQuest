@@ -51,7 +51,7 @@ export default function MovieDetail() {
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ duration: 1.5, ease: "easeOut" }}
                                 >
-                                        <div className="my-20 mx-10 sm:mx-10 md:mx-20 lg:mx-40 rounded-xl overflow-hidden  bg-secondaryBlack shadow-lg shadow-black">
+                                        <div className="my-20 mx-10 sm:mx-10 md:mx-20 lg:mx-40 rounded-xl overflow-hidden  bg-gray-300 dark:bg-secondaryBlack shadow-lg shadow-gray-400 dark:shadow-black">
                                                 <img
                                                         src={
                                                         movie.backdrop_path
@@ -64,32 +64,32 @@ export default function MovieDetail() {
                                                         className="w-full h-[300px] md:h-[500px] object-cover"
                                                         />
 
-                                                <div className="p-8 text-white" >
+                                                <div className="p-8 text-secondaryBlack dark:text-white" >
                                                         <h3 className="text-[clamp(1rem,3vw,2.5rem)] font-semibold ">
                                                                                 
                                                                        {movie.title}  
                                                                                  
                                                         </h3>
 
-                                                        <p className="text-[clamp(1rem,1.5vw,2.5rem)] text-gray-400 my-8 "> 
+                                                        <p className="text-[clamp(1rem,1.5vw,2.5rem)]  text-gray-700 dark:text-gray-400 my-8 "> 
                                                                                             {movie.overview}
                                                         </p>
                                                         <div className="flex gap-4 flex-wrap">
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold"> Status: </span>  {movie.status}      </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold"> Original language: </span>   {movie.original_language}  </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold"> Adult : </span> {movie.adult ? "Yes" : "No"} </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold">Release date: </span> {movie.release_date}</p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold">Runtime: </span> {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold">Vote: </span> {movie.vote_average}/10 </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 "> <span className="font-bold">Popularity: </span> {movie.popularity} </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] text-gray-400 mt-1 bg-mainBlack p-4 font-stretch-105%"> <span className="font-bold">Genres: </span>{movie.genres.map(genre => genre.name).join(' | ')} </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Status: </span>  {movie.status}      </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Original language: </span>   {movie.original_language}  </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Adult : </span> {movie.adult ? "Yes" : "No"} </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Release date: </span> {movie.release_date}</p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Runtime: </span> {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Vote: </span> {movie.vote_average}/10 </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Popularity: </span> {movie.popularity} </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 font-stretch-105%"> <span className="font-bold">Genres: </span>{movie.genres.map(genre => genre.name).join(' | ')} </p>
                                                         </div>
                                                         <div className=" flex gap-4 mt-8 flex-wrap">
-                                                                <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-red-500"> Watch </LinkButton>
-                                                                <LinkButton to={"/"} className="bg-mainBlack"> See all movies </LinkButton>
+                                                                <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-gray-400 dark:bg-red-500 font-bold"> Watch </LinkButton>
+                                                                <LinkButton to={"/"} className="bg-gray-400 dark:bg-mainBlack font-bold"> See all movies </LinkButton>
                                                                 <Button
                                                                         onClick={handleFavorite}
-                                                                        className=" bg-gray-700 text-white"
+                                                                        className=" bg-gray-400 dark:bg-gray-700 font-bold"
                                                                         aria-label="Ajouter aux favoris"
                                                                         type="button"
                                                                 >Save</Button>

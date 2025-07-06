@@ -28,7 +28,7 @@ export default function Favorites() {
                                 transition={{ duration: 1.5, ease: "easeOut" }}
                        >
                   
-                                        <Button className="bg-secondaryBlack hover:bg-red-500 py-5 mt-24" onClick={handleClick}> Clear Favorites </Button>
+                                        <Button className="bg-gray-400 text-white dark:bg-secondaryBlack hover:bg-gray-700 dark:hover:bg-red-500 py-5 mt-24 font-bold" onClick={handleClick}> Clear Favorites </Button>
                      
                                 <div className=" flex flex-wrap gap-6 justify-center my-20 px-10">
                                 {favorites.map(movie => (
