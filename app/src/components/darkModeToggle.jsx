@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
-import { Moon, Sun } from "lucide-react"; // optionnel : icônes si tu veux
+import { Moon, Sun } from "lucide-react";
 
 export default function DarkModeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
 
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [isDark]);
 

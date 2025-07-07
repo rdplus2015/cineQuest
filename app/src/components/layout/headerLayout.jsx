@@ -4,7 +4,7 @@ import DarkModeToggle
  from "../darkModeToggle"
 export default function Header() {
         return (
-                <header className="py-4  border-b-1 border-gray-400 dark:border-gray-800">
+                <header className="sticky top-0 z-50 py-4  border-b-1 border-gray-400 dark:border-gray-800 bg-gray-200 dark:bg-mainBlack">
                         <div className=" flex justify-around py-2 align-items-center">
                                 <div className="flex items-center">
                                         <a href="http:/"> 

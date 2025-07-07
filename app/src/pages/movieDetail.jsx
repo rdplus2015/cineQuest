@@ -40,7 +40,18 @@ export default function MovieDetail() {
                         alert(`"${movie.title}" favorites already existe`);
                 }
 
-        }        
+        } 
+
+        if (!movie) {
+  return (
+    <PageLayout>
+      <main className="min-h-screen flex items-center justify-center bg-white text-black dark:bg-mainBlack dark:text-white transition-colors duration-300">
+        <span className="text-xl animate-pulse">Loading...</span>
+      </main>
+    </PageLayout>
+  );
+}
+
 
         if (movie) {
                  return (
@@ -49,7 +60,7 @@ export default function MovieDetail() {
                                 
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 1.5, ease: "easeOut" }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
                                         <div className="my-20 mx-10 sm:mx-10 md:mx-20 lg:mx-40 rounded-xl overflow-hidden  bg-gray-300 dark:bg-secondaryBlack shadow-lg shadow-gray-400 dark:shadow-black">
                                                 <img
@@ -75,14 +86,14 @@ export default function MovieDetail() {
                                                                                             {movie.overview}
                                                         </p>
                                                         <div className="flex gap-4 flex-wrap">
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Status: </span>  {movie.status}      </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Original language: </span>   {movie.original_language}  </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Adult : </span> {movie.adult ? "Yes" : "No"} </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Release date: </span> {movie.release_date}</p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Runtime: </span> {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Vote: </span> {movie.vote_average}/10 </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Popularity: </span> {movie.popularity} </p>
-                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark: text-white text-gray-400 mt-1 bg-gray-700 dark:bg-mainBlack p-4 font-stretch-105%"> <span className="font-bold">Genres: </span>{movie.genres.map(genre => genre.name).join(' | ')} </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Status: </span>  {movie.status}      </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Original language: </span>   {movie.original_language}  </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold"> Adult : </span> {movie.adult ? "Yes" : "No"} </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Release date: </span> {movie.release_date}</p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Runtime: </span> {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Vote: </span> {movie.vote_average}/10 </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 "> <span className="font-bold">Popularity: </span> {movie.popularity} </p>
+                                                                <p className="text-[clamp(0.75rem,1.5vw,1rem)] dark:text-white text-white mt-1 bg-gray-700 dark:bg-mainBlack p-4 font-stretch-105%"> <span className="font-bold">Genres: </span>{movie.genres.map(genre => genre.name).join(' | ')} </p>
                                                         </div>
                                                         <div className=" flex gap-4 mt-8 flex-wrap">
                                                                 <LinkButton to={"https://www.netflix.com/ca-fr/"} className="bg-gray-400 dark:bg-red-500 font-bold"> Watch </LinkButton>
