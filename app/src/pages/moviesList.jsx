@@ -64,7 +64,7 @@ export default function MoviesList() {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                        >
-                                <div className="relative bg-[url(/img/bg-2.png)] bg-cover bg-center min-h-[300px] md:min-h-[500px]">
+                                <div className="relative bg-[url(/img/bg-1.png)] bg-cover bg-center min-h-[300px] md:min-h-[500px]">
                                         <div className="absolute inset-0 bg-gray-800/80  dark:bg-mainBlack/80"></div>
                                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
                                                 <motion.h2 className=" text-[clamp(1.5rem,2.5vw,4rem)] font-bold text-center font-mono text-white"
