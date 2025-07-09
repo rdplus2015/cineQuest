@@ -44,3 +44,9 @@ jobs:
       - name: Deploy dist/ to S3
         working-directory: ./app
         run: aws s3 sync dist/ s3://cinequest --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+          --distribution-id EA9PU6C3T0BST \
+          --paths "/*"
