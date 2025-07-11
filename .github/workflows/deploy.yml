@@ -26,11 +26,6 @@ jobs:
         working-directory: ./app
         run: npm install
 
-      - name: Debug API Key before build
-        run: echo "key = $VITE_TMDB_API_KEY"
-        env:
-          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
-
       - name: Build project with Vite
         working-directory: ./app
         run: npm run build
