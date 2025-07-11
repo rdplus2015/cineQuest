@@ -29,6 +29,12 @@ resource "aws_cloudfront_distribution" "cdn" {
   enabled = true
   # default_root_object = "index.html"
 
+  tags = {
+    Name        = "cineQuest-tf"
+    Environment = "production"
+    Description = "Distribution pour le site React CineQuest via CloudFront"
+  }
+
   origin {
     domain_name = aws_s3_bucket.site.bucket_regional_domain_name
     origin_id   = "cinequest-origin"
