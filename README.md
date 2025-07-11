@@ -117,13 +117,18 @@ git branch
       - 403 → index.html
       - 404 → index.html
 - GitHub Secrets:
+
   - `AWS_ACCESS_KEY_ID`
   - `AWS_SECRET_ACCESS_KEY`
   - `ÀPI_KEY`
 
+  - **Note:** don't forget to update the s3 bucket name and CloudFront distribution name in your `deploy.yml`
+
 ### Deployment Steps
 
-1. Push your code to the `main` branch.
+1. Push your code to the
+   `main` branch.
+
 2. GitHub Actions will:
    - Build the app with Vite and install all dependencies
    - Upload the contents of `dist/` to the S3 bucket
@@ -178,6 +183,7 @@ This method provisions the infrastructure automatically using Terraform.
 ### Prerequisites
 
 - Install and configure the **AWS CLI**
+
 - Install the **Terraform CLI**
 - The Terraform configuration files are included in the `infrastructure/` directory of this repository
 
@@ -212,6 +218,7 @@ terraform apply
 Terraform will provision:
 
 - An S3 bucket with appropriate configuration
+
 - A CloudFront distribution with HTTPS and Origin Access Control
 
 4. Push your app code to the `main-tf` branch
