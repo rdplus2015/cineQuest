@@ -16,6 +16,12 @@ resource "aws_s3_bucket_public_access_block" "site" {
   restrict_public_buckets = false
 }
 
+resource "aws_s3_bucket_versioning" "site" {
+  bucket = aws_s3_bucket.site.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
 
 resource "aws_cloudfront_origin_access_control" "oac" {
   name                              = "cinequest-tf-oac"
