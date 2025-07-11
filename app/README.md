@@ -1,124 +1,216 @@
+# CineQuest – Movie Search App
 
-# 🎬 Projet Portfolio Frontend : Site React + API de Films + AWS Cloud (S3 + CloudFront + Terraform)
+**CineQuest** is a **modern, high-performance movie search application** built with **React and Vite**. It allows users to effortlessly discover movies and access detailed information about them, including ratings, cast, synopsis, and more.
 
-## 🎯 Objectif
+It consumes the **TMDB public API** directly from the frontend, and is deployed on **AWS**.
 
-Développer un site web moderne et professionnel qui permet aux utilisateurs de rechercher des informations sur des films via une API externe (comme OMDb ou TMDb). Le site sera construit en React, stylisé avec Tailwind CSS, déployé sur Amazon S3 et distribué via CloudFront. L’ensemble de l’infrastructure sera provisionné avec Terraform, et le déploiement sera automatisé avec GitHub Actions et AWS CLI.
+## Features
 
----
+- Fast frontend with `Vite` + `React`
+- Movie search interface using [TMDB API](https://www.themoviedb.org/)
+- Result list with posters, titles, synopsis, release year, etc.
+- Pagination
+- Animations with `Framer motion`
+- Favorites saved locally via `localStorage`
+- Detail pages for each movie
+- **Responsive** interface and clean design, including **dark mode** thanks to `Tailwind CSS`
+- Secure static hosting with **S3 + CloudFront + OAC**
+- **CI/CD pipeline with GitHub Actions**:
+  - Build + upload to S3
+  - Invalidate CloudFront cache after each deployment
+- Infrastructure managed with **Terraform**
 
-## 🧰 Stack technique
+## Technologies Used
 
-### Développement Frontend
-- **React (avec Vite)** : pour un développement rapide et une app dynamique.
-- **Tailwind CSS** : pour une mise en page rapide, responsive et professionnelle.
-- **API publique de films** : OMDb ou TheMovieDB, utilisée pour la recherche et l'affichage de données cinéma.
+| Layer         | Stack                                 |
+|---------------|----------------------------------------|
+| Frontend      | React, Vite, Tailwind CSS, Framer motion
+| API           | [TMDB API](https://developers.themoviedb.org) |
+| Hosting       | AWS S3 (private bucket)               |
+| CDN / HTTPS   | AWS CloudFront + Origin Access Control |
+| Infrastructure| Terraform (IaC)                       |
+| CI/CD         | GitHub Actions                        |
 
-### Infrastructure AWS
-- **S3** : hébergement statique du site.
-- **CloudFront** : distribution rapide et sécurisée du site via CDN.
-- **ACM** : certificat SSL pour HTTPS.
-- **IAM** : permissions précises pour sécuriser les ressources.
-- **Terraform** : description et automatisation de toute l'infrastructure.
-- **Route 53 (optionnel)** : nom de domaine personnalisé.
+## Architecture Diagram
 
-### Déploiement
-- **AWS CLI** : déploiement manuel et test local.
-- **GitHub Actions** : déploiement automatisé à chaque push sur `main`.
+![](diagram.webp)
 
----
+## Useful Resources
 
-## 🧱 Organisation du projet
+- [React Documentation](https://react.dev/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [Framer motion docs](https://motion.dev/docs)
+- [Terraform AWS Provider Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- [IAM docs](https://docs.aws.amazon.com/iam/)
+- [AWS CLI Docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+- [S3 docs](https://docs.aws.amazon.com/s3/)
+- [CloudFront docs](https://docs.aws.amazon.com/cloudfront/)
+- [GitHub Actions Docs](https://docs.github.com/en/actions)
+- [TMDB Developer Docs](https://developers.themoviedb.org)
 
-### Dossiers principaux
-- `frontend/` : contient l'application React.
-- `terraform/` : contient tous les fichiers de configuration d'infrastructure.
-- `.github/workflows/` : contient les workflows CI/CD pour GitHub Actions.
-- `README.md` : documentation du projet.
+# How to Test the App
 
----
+To test the CineQuest movie search app locally or contribute to its development, follow the steps below.
 
-## 🚀 Fonctionnalités clés de l’application
+- **Local**
+- **AWS without Terraform (main branch)**
+- **AWS with Terraform (main-tf branch)**
 
-- Champ de recherche pour trouver des films.
-- Liste de résultats avec affiches, titres, synopsis, année, etc.
-- Favoris enregistrés localement via `localStorage`.
-- Pages de détails pour chaque film.
-- Interface responsive et design propre grâce à Tailwind CSS.
+## Local Deployment
 
----
+### 1. **Clone the Repository**
+```bash
+git clone https://github.com/rdplus2015/cineQuest.git
+cd cinequest/app
+```
 
-## ⚙️ Infrastructure cloud (Terraform)
+### 2. **Install Dependencies**
+```bash
+npm install
+```
 
-Le projet utilise Terraform pour :
+### 3. **Add Your API Key**
+Create a `.env` file at the root of the `app/` directory:
+```env
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+```
+You can obtain an API key from [TMDB's developer page](https://developers.themoviedb.org/).
 
-- Créer un bucket S3 configuré pour hébergement statique.
-- Créer une distribution CloudFront avec un certificat SSL ACM.
-- Générer et attacher des IAM Policies minimales pour sécuriser les accès.
-- Configurer (facultativement) Route 53 pour le domaine personnalisé.
+### 4. **Run the Development Server**
+```bash
+npm run dev
+```
+This will launch the app at [http://localhost:5173](http://localhost:5173).
 
----
+## Deploy to AWS without Terraform (Main Branch)
 
-## 🔐 Sécurité et IAM
+This method uses GitHub Actions to automate deployment to S3 + CloudFront.
 
-Le bucket S3 est privé. L’accès public est autorisé uniquement via CloudFront.  
-Les clés utilisées dans GitHub Actions sont protégées et possèdent uniquement les droits nécessaires pour :
-- synchroniser le contenu React dans S3 ;
-- invalider le cache de CloudFront.
+Make sure you are on the main branch:
+```bash
+git branch
+```
 
----
+### Prerequisites
 
-## ⚙️ Déploiement (CI/CD)
+- AWS account with:
+  - An **IAM user** with programmatic access and full permissions on **S3** and **CloudFront**.
+    This is covered under the free-tier.
+  - An S3 bucket:
+    - Create the S3 bucket
+    - Disable static hosting (because CloudFront is used)
+    - Disable Block Public Access (required for CloudFront access)
+  - A CloudFront distribution:
+    - Create a CloudFront distribution manually
+    - Associate it with the S3 bucket as origin
+    - Enable **Origin Access Control (OAC)**. CloudFront will automatically update the bucket policy to restrict access to CloudFront only.
+    - Enable HTTP to HTTPS redirection
+    - Go to the **Error Pages** tab and configure custom responses for:
+      - 403 → index.html
+      - 404 → index.html
+- GitHub Secrets:
+  - `AWS_ACCESS_KEY_ID`
+  - `AWS_SECRET_ACCESS_KEY`
+  - `ÀPI_KEY`
 
-Le projet est automatisé comme suit :
+### Deployment Steps
 
-- À chaque `push` sur la branche `main`, GitHub Actions :
-  - installe les dépendances,
-  - build l’app React,
-  - synchronise les fichiers sur S3,
-  - déclenche une invalidation CloudFront.
+1. Push your code to the `main` branch.
+2. GitHub Actions will:
+   - Build the app with Vite and install all dependencies
+   - Upload the contents of `dist/` to the S3 bucket
+   - Remove outdated files (via `--delete` flag)
+   - Invalidate CloudFront cache to reflect the new version
+3. Open the CloudFront domain in your browser to access the app via HTTPS
 
-Avant d’automatiser, on peut déployer manuellement avec AWS CLI pour tester les commandes.
+### Note
+If you want to deploy **without CloudFront**, using **only S3 static website hosting**:
 
----
+- Enable **Static website hosting** in S3 bucket settings
+- Use the **root AWS account** to assign the following inline policy to your IAM user: `access-analyzer:ValidatePolicy`
 
-## ✅ Résultat final
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": "access-analyzer:ValidatePolicy",
+      "Resource": "*"
+    }
+  ]
+}
+```
 
-- Un site React professionnel en ligne, rapide, sécurisé, responsive.
-- Déploiement automatisé (CI/CD).
-- Infrastructure déclarée avec du code (IaC).
-- Stack moderne mettant en avant React, AWS, DevOps et sécurité cloud.
+- Disable Block Public Access
 
----
+- Add a bucket policy that allows public access to the objects
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPublicRead",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::cinequest/*"
+    }
+  ]
+}
+```
 
-## 🧠 Pourquoi ce projet a de la valeur dans un portfolio
+## Deploy with Terraform (Main-tf Branch)
 
-- Montre la maîtrise de React + intégration API.
-- Déploie sur AWS avec les outils pro (S3, CloudFront, ACM, IAM).
-- Montre une approche DevOps sérieuse (Terraform + CI/CD).
-- Prouve ta capacité à construire une stack de production simple et moderne.
+This method provisions the infrastructure automatically using Terraform.
 
----
+### Prerequisites
 
-## 📝 Étapes suggérées
+- Install and configure the **AWS CLI**
+- Install the **Terraform CLI**
+- The Terraform configuration files are included in the `infrastructure/` directory of this repository
 
-1. Créer l’application React avec Vite.
-2. Intégrer l’API de films et afficher les résultats.
-3. Styliser avec Tailwind CSS.
-4. Tester le build localement.
-5. Créer l’infrastructure AWS avec Terraform.
-6. Déployer une première fois manuellement avec AWS CLI.
-7. Automatiser avec GitHub Actions.
-8. Ajouter un domaine (optionnel).
-9. Documenter le projet dans ton portfolio.
+Switch to the correct branch:
+```bash
+git checkout main-tf
+```
 
----
+### Deployment Steps
 
-## 📚 Ressources utiles
+1. Navigate to the Terraform project directory:
+```bash
+cd infrastructure
+```
 
-- Documentation React + Vite
-- Docs Tailwind CSS
-- Docs Terraform AWS Provider
-- Docs AWS CLI
-- GitHub Actions (CI/CD)
-- OMDb API / TheMovieDB API
+2. Initialize the workspace:
+```bash
+terraform init
+```
+
+3. Apply the configuration:
+```bash
+terraform apply
+```
+
+**Note:** All Terraform commands must be entered in a CLI where AWS CLI is configured. Terraform will use those credentials.
+
+Terraform will provision:
+- An S3 bucket with appropriate configuration
+- A CloudFront distribution with HTTPS and Origin Access Control
+
+
+4. Push your app code to the `main-tf` branch
+5. GitHub Actions will automatically build and deploy the frontend to the infrastructure provisioned by Terraform
+
+### Note 
+If you are using a private API key, do not store it in GitHub secrets and inject it on the frontend, because it will still be visible in browser dev tools.
+
+## Author
+
+Ridi Otoko
+
+## License
+
+MIT License
+
