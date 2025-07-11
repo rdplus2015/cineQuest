@@ -1,13 +1,13 @@
 import LinkButton from "../LinkButton"
 import { motion } from "framer-motion"
-import DarkModeToggle
- from "../darkModeToggle"
+import DarkModeToggle from "../darkModeToggle"
+import { Link } from "react-router-dom"
 export default function Header() {
         return (
                 <header className="sticky top-0 z-50 py-4  border-b-1 border-gray-400 dark:border-gray-800 bg-gray-200 dark:bg-mainBlack">
                         <div className=" flex justify-around py-2 align-items-center">
                                 <div className="flex items-center">
-                                        <a href="http:/"> 
+                                        <Link to={"/"} > 
                                         <motion.h1 className=" text-[clamp(1.5rem,1.7vw,4rem)] font-bold text-mainBlack dark:text-white transition-colors duration-500 ease-in-out"
                                                 initial={{ opacity: 0, x:-20}}
                                                 animate={{ opacity: 1, x:0 }}
@@ -15,7 +15,7 @@ export default function Header() {
                                         > 
                                         CineQuest 
                                         </motion.h1> 
-                                        </a>
+                                        </Link>
                                 </div>
                                 <motion.div 
                                         initial={{ opacity: 0, x:20}}

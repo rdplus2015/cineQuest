@@ -29,6 +29,8 @@ jobs:
       - name: Build project with Vite
         working-directory: ./app
         run: npm run build
+        env:
+          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
 
       - name: Check if dist/ directory exists
         working-directory: ./app
