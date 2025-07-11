@@ -10,6 +10,7 @@ It consumes the **TMDB public API** directly from the frontend, and is deployed 
 - Movie search interface using [TMDB API](https://www.themoviedb.org/)
 - Result list with posters, titles, synopsis, release year, etc.
 - Pagination
+
 - Animations with `Framer motion`
 - Favorites saved locally via `localStorage`
 - Detail pages for each movie
@@ -102,28 +103,40 @@ git branch
 ### Prerequisites
 
 - AWS account with:
+
   - An **IAM user** with programmatic access and full permissions on **S3** and **CloudFront**.
     This is covered under the free-tier.
+
   - An S3 bucket:
+
     - Create the S3 bucket
     - Disable static hosting (because CloudFront is used)
+
     - Disable Block Public Access (required for CloudFront access)
+
   - A CloudFront distribution:
+
     - Create a CloudFront distribution manually
     - Associate it with the S3 bucket as origin
     - Enable **Origin Access Control (OAC)**. CloudFront will automatically update the bucket policy to restrict access to CloudFront only.
+
     - Enable HTTP to HTTPS redirection
     - Go to the **Error Pages** tab and configure custom responses for:
       - 403 → index.html
       - 404 → index.html
+
 - GitHub Secrets:
+
   - `AWS_ACCESS_KEY_ID`
+
   - `AWS_SECRET_ACCESS_KEY`
   - `ÀPI_KEY`
+  - **Note:** don't forget to update the s3 bucket name and CloudFront distribution name in your `deploy.yml`
 
 ### Deployment Steps
 
 1. Push your code to the `main` branch.
+
 2. GitHub Actions will:
    - Build the app with Vite and install all dependencies
    - Upload the contents of `dist/` to the S3 bucket
@@ -136,6 +149,7 @@ git branch
 If you want to deploy **without CloudFront**, using **only S3 static website hosting**:
 
 - Enable **Static website hosting** in S3 bucket settings
+
 - Use the **root AWS account** to assign the following inline policy to your IAM user: `access-analyzer:ValidatePolicy`
 
 ```json
@@ -179,6 +193,7 @@ This method provisions the infrastructure automatically using Terraform.
 
 - Install and configure the **AWS CLI**
 - Install the **Terraform CLI**
+
 - The Terraform configuration files are included in the `infrastructure/` directory of this repository
 
 Switch to the correct branch:
@@ -212,9 +227,11 @@ terraform apply
 Terraform will provision:
 
 - An S3 bucket with appropriate configuration
+
 - A CloudFront distribution with HTTPS and Origin Access Control
 
 4. Push your app code to the `main-tf` branch
+
 5. GitHub Actions will automatically build and deploy the frontend to the infrastructure provisioned by Terraform
 
 ### Note
