@@ -206,11 +206,11 @@ Terraform will provision:
 ### Note 
 If you are using a private API key, do not store it in GitHub secrets and inject it on the frontend, because it will still be visible in browser dev tools.
 
-## Author
+## Author contact
 
-Ridi Otoko
+-  [LinkedIn](https://www.linkedin.com/in/ridi-otoko-624a401a2/)
 
 ## License
 
-MIT License
+This project is licensed under the MIT License. See the +LICENSE+
 
